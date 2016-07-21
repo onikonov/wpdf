@@ -47,7 +47,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#home" class="page-scroll">Home</a></li>
-        <li><a href="#about-section" class="page-scroll">About</a></li>
         <li><a href="#services-section" class="page-scroll">Services</a></li>
         <li><a href="#contact-section" class="page-scroll">Donate</a></li>
       </ul>
@@ -63,7 +62,7 @@
     <h1>Welcome to <span class="color">wpdf</span></h1>
     <p>Our service allows to retrieve the pictures, cut pdf pages, and more. Work with pdf files easily</p>
     <div class="clearfix"></div>
-    <a href="#about-section" class="btn btn-default btn-lg page-scroll">Start</a> </div>
+    <a href="#services-section" class="btn btn-default btn-lg page-scroll">Start</a> </div>
 </header>
 <!-- About Section -->
 
@@ -79,17 +78,42 @@
       <div class="col-md-3 col-sm-6 service"> <i class="fa fa-desktop"></i>
         <h4>Extract images</h4>
         <p>
-<form  enctype="multipart/form-data" action=""  method="post">
-  <input  type="hidden" name="MAX_FILE_SIZE" value="300000"  />
-  <input  type="file" name="uploadFile"/>
-  <input  type="submit" name="upload" value="Upload"/>
-  </form>
+<!-- Upload here -->
+   <?php
+if ($_FILES && $_FILES['filename']['error']== UPLOAD_ERR_OK)
+{
+    $name = $_FILES['filename']['name'];
+    move_uploaded_file($_FILES['filename']['name'], $name);
+    echo "File Ok. Please wait";
+}
+?>
+<form method="post" enctype='multipart/form-data'>
+<input type='file' name='filename' size='10' /><br /><br />
+<input type='submit' value='Upload' />
+</form>
+</p>         
+
 
 </p>
       </div>
       <div class="col-md-3 col-sm-6 service"> <i class="fa fa-gears"></i>
         <h4>Cut into pages</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque.</p>
+        <p>
+<!-- UPLOAD -->
+<?php
+if ($_FILES && $_FILES['filename']['error']== UPLOAD_ERR_OK)
+{
+    $name = $_FILES['filename']['name'];
+    move_uploaded_file($_FILES['filename']['name'], $name);
+    echo "File Ok. Please wait";
+}
+?>
+<form method="post" enctype='multipart/form-data'>
+<input type='file' name='filename' size='10' /><br /><br />
+<input type='submit' value='Upload' />
+</form>
+</p>
+        
       </div>
       <div class="col-md-3 col-sm-6 service"> <i class="fa fa-pie-chart"></i>
         <h4>In the development</h4>
